@@ -3,8 +3,8 @@
 
 /* === Main container (desktop/laptop) === */
 .tailgate-stats {
-  background: linear-gradient(90deg, #fff6cc 0%, #fffdf5 100%);
-  border-left: 4px solid #F2C23A;
+  background: linear-gradient(90deg, #e7fff1 0%, #f7fff9 100%);
+  border-left: 4px solid #009B5E; /* darker green border */
   border-radius: 10px;
   padding: 10px 18px 16px;
   margin: 20px auto;
@@ -36,20 +36,20 @@
 .main-header h3 {
   margin: 0;
   font-weight: 800;
-  color: #3b2f00;
+  color: #003b26;
   transition: color 0.3s ease;
 }
 
 .main-header .state {
   font-size: 17px;
   font-weight: 900;
-  color: #3b2f00;
+  color: #003b26;
 }
 
 .main-header .label {
   font-size: 14px;
   font-weight: 700;
-  color: #4b3b00;
+  color: #004b2e;
   line-height: 1.2;
 }
 
@@ -66,16 +66,16 @@
   transition: all 0.35s ease;
 }
 
-/* yellow line directly under number */
+/* green line directly under number */
 .main-header .total::after {
   content: "";
   position: absolute;
-  bottom: 0; /* sits right under number */
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 40px;
   height: 3px;
-  background: #F2C23A;
+  background: #009B5E;
   border-radius: 2px;
   opacity: 0.9;
 }
@@ -83,10 +83,10 @@
 /* Hover behaviour */
 .main-header:hover .state,
 .main-header:hover .label {
-  color: #F2C23A;
+  color: #009B5E;
 }
 .main-header:hover .total {
-  background: #F2C23A;
+  background: #66E2A1;
   color: #111;
   transform: scale(1.05);
 }
@@ -99,7 +99,7 @@
   padding-bottom: 14px;
   margin-top: 8px;
   scrollbar-width: thin;
-  scrollbar-color: #F2C23A #fff8e0;
+  scrollbar-color: #009B5E #e7fff1;
   -webkit-overflow-scrolling: touch;
   flex: 1;
 }
@@ -109,11 +109,11 @@
   height: 4px;
 }
 .secondary-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #F2C23A, #ffe88a);
+  background: linear-gradient(90deg, #009B5E, #66E2A1);
   border-radius: 10px;
 }
 .secondary-scroll::-webkit-scrollbar-track {
-  background: #fff8e0;
+  background: #e7fff1;
 }
 
 /* === Stat boxes === */
@@ -127,12 +127,12 @@
 }
 .stat-box:hover {
   transform: scale(1.06);
-  background: rgba(255, 242, 150, 0.35);
-  box-shadow: 0 3px 8px rgba(242, 194, 58, 0.25);
+  background: rgba(102, 226, 161, 0.25);
+  box-shadow: 0 3px 8px rgba(0, 155, 94, 0.25);
 }
 .stat-box h4 {
   font-size: 13.5px;
-  color: #4b3b00;
+  color: #004b2e;
   margin: 0;
   font-weight: 700;
   transition: color 0.3s ease;
@@ -141,7 +141,7 @@
   display: block;
   font-size: 12px;
   font-weight: 600;
-  color: #7a6b2a;
+  color: #157a51;
   margin-top: 2px;
 }
 .stat-box strong {
@@ -157,7 +157,7 @@
   display: block;
   width: 30px;
   height: 3px;
-  background: #F2C23A;
+  background: #009B5E;
   margin: 5px auto 0;
   border-radius: 2px;
   opacity: 0.9;
@@ -178,7 +178,7 @@
     font-size: 15px;
     font-weight: 800;
     text-align: center;
-    color: #3b2f00;
+    color: #004b2e;
   }
 
   .mobile-only .total {
@@ -198,7 +198,7 @@
     transform: translateX(-50%);
     width: 36px;
     height: 3px;
-    background: #F2C23A;
+    background: #009B5E;
     border-radius: 2px;
     opacity: 0.9;
   }
@@ -245,7 +245,7 @@ body.wp-admin .tailgate-stats {
 /* === Fix hover highlight for mobile text === */
 .main-header:hover .mobile-only,
 .main-header:active .mobile-only {
-  color: #F2C23A;
+  color: #009B5E;
   transition: color 0.3s ease;
 }
 </style>
