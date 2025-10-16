@@ -1,12 +1,11 @@
 <style>
 /* === Tailgate Stats (Shared Styles for All States) === */
 
-/* === Main container (desktop/laptop) === */
 .tailgate-stats {
-  background: linear-gradient(90deg, #e7fff1 0%, #f7fff9 100%);
-  border-left: 4px solid #009B5E; /* darker green border */
+  background: linear-gradient(90deg, #fff6cc 0%, #fffdf5 100%);
+  border-left: 4px solid #F2C23A;
   border-radius: 10px;
-  padding: 10px 18px 16px;
+  padding: 10px 18px 20px; /* added more bottom space */
   margin: 20px auto;
   width: calc(100% - 40px);
   max-width: 850px;
@@ -21,6 +20,16 @@
   z-index: 2;
   clear: both;
   isolation: isolate;
+  
+  /* FIXES CUT-OFF ISSUE */
+  overflow: clip; /* replaces hidden for better visual behavior */
+}
+
+/* (optional safety for very old browsers) */
+@supports not (overflow: clip) {
+  .tailgate-stats {
+    overflow: visible;
+  }
 }
 
 /* === Header (Desktop version) === */
