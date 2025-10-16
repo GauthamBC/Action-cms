@@ -1,11 +1,12 @@
 <style>
 /* === Tailgate Stats (Shared Styles for All States) === */
 
+/* === Main container (desktop/laptop) === */
 .tailgate-stats {
-  background: linear-gradient(90deg, #fff6cc 0%, #fffdf5 100%);
-  border-left: 4px solid #F2C23A;
+  background: linear-gradient(90deg, #e7fff1 0%, #f7fff9 100%);
+  border-left: 4px solid #009B5E; /* darker green border */
   border-radius: 10px;
-  padding: 10px 18px 20px; /* added more bottom space */
+  padding: 10px 18px 16px;
   margin: 20px auto;
   width: calc(100% - 40px);
   max-width: 850px;
@@ -20,16 +21,6 @@
   z-index: 2;
   clear: both;
   isolation: isolate;
-  
-  /* FIXES CUT-OFF ISSUE */
-  overflow: clip; /* replaces hidden for better visual behavior */
-}
-
-/* (optional safety for very old browsers) */
-@supports not (overflow: clip) {
-  .tailgate-stats {
-    overflow: visible;
-  }
 }
 
 /* === Header (Desktop version) === */
@@ -162,6 +153,53 @@
   background: #e7fff1;
 }
 
+/* === Stat boxes === */
+.stat-box {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 120px;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 3px 0;
+}
+.stat-box:hover {
+  transform: scale(1.06);
+  background: rgba(102, 226, 161, 0.25);
+  box-shadow: 0 3px 8px rgba(0, 155, 94, 0.25);
+}
+.stat-box h4 {
+  font-size: 13.5px;
+  color: #004b2e;
+  margin: 0;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+.stat-box h4 span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #157a51;
+  margin-top: 2px;
+}
+.stat-box strong {
+  font-size: 18px;
+  color: #000;
+  font-weight: 800;
+  display: block;
+  margin-top: 4px;
+  position: relative;
+}
+.stat-box strong::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #009B5E;
+  margin: 5px auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
 /* === Mobile layout === */
 .mobile-only {
   display: none;
@@ -253,37 +291,37 @@ body.wp-admin .tailgate-stats {
   <div class="main-header highlightable">
     <!-- Desktop layout -->
     <h3 class="desktop-only">
-      <span class="state">#2 Los Angeles Lakers</span><br>
+      <span class="state">#1 New York Knicks</span><br>
       <span class="label">Total Cost (Family of Four)</span><br>
-      <strong class="total">$1,937.37</strong>
+      <strong class="total">$2,130.53</strong>
     </h3>
 
     <!-- Mobile layout -->
     <h3 class="mobile-only">
-      <span>Los Angeles Lakers Family Cost:</span>
-      <strong class="total">$1,937.37</strong>
+      <span>New York Knicks Family Cost:</span>
+      <strong class="total">$2,130.53</strong>
     </h3>
   </div>
 
   <div class="secondary-scroll">
     <div class="stat-box">
-      <h4>🎟️ Four Tickets<br><span>(Crypto.com Arena)</span></h4>
-      <strong>$1,154.41</strong>
+      <h4>🎟️ Four Tickets<br><span>(Madison Square Garden)</span></h4>
+      <strong>$1,383.76</strong>
     </div>
 
     <div class="stat-box">
       <h4>🍔 Food & Drinks<br><span>(Average Spend)</span></h4>
-      <strong>$74.84</strong>
+      <strong>$83.08</strong>
     </div>
 
     <div class="stat-box">
       <h4>🧢 Merchandise<br><span>(4 Jerseys + 4 Hats)</span></h4>
-      <strong>$683.42</strong>
+      <strong>$614.30</strong>
     </div>
 
     <div class="stat-box">
       <h4>🅿️ Parking<br><span>(Per Game)</span></h4>
-      <strong>$24.70</strong>
+      <strong>$49.39</strong>
     </div>
   </div>
 </div>
