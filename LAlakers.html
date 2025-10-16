@@ -1,0 +1,280 @@
+<style>
+/* === Tailgate Stats (Shared Styles for All States) === */
+
+/* === Main container (desktop/laptop) === */
+.tailgate-stats {
+  background: linear-gradient(90deg, #e7fff1 0%, #f7fff9 100%);
+  border-left: 4px solid #009B5E; /* darker green border */
+  border-radius: 10px;
+  padding: 10px 18px 16px;
+  margin: 20px auto;
+  width: calc(100% - 40px);
+  max-width: 850px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 2;
+  clear: both;
+  isolation: isolate;
+}
+
+/* === Header (Desktop version) === */
+.main-header {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 170px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  transition: all 0.35s ease;
+}
+
+.main-header h3 {
+  margin: 0;
+  font-weight: 800;
+  color: #003b26;
+  transition: color 0.3s ease;
+}
+
+.main-header .state {
+  font-size: 17px;
+  font-weight: 900;
+  color: #003b26;
+}
+
+.main-header .label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #004b2e;
+  line-height: 1.2;
+}
+
+/* highlight the number + underline */
+.main-header .total {
+  font-size: 25px;
+  font-weight: 900;
+  color: #000;
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 10px 8px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+/* green line directly under number */
+.main-header .total::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: #009B5E;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* === Hover behaviour (updated unified zoom effect) === */
+.main-header h3,
+.main-header .total {
+  transition: all 0.25s ease-in-out;
+}
+
+/* When hovering over the header */
+.main-header:hover .state,
+.main-header:hover .label,
+.main-header:hover h3 {
+  color: #009B5E; /* green text on hover */
+  transform: scale(1.08); /* subtle zoom for header text */
+}
+
+/* Highlighted number effect */
+.main-header:hover .total {
+  background: #009B5E;  /* same dark green as underline */
+  color: #fff;          /* white text */
+  transform: scale(1.12); /* slightly stronger zoom for number */
+  border-radius: 8px;
+}
+
+/* === Hover effect for stat boxes (subtle zoom + green number) === */
+.stat-box {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 120px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.stat-box:hover {
+  transform: scale(1.06); /* smooth zoom */
+  box-shadow: 0 4px 10px rgba(0, 155, 94, 0.2);
+  background: rgba(0, 155, 94, 0.05); /* very light green tint for depth */
+}
+
+/* keep text same color, only highlight the number */
+.stat-box:hover strong {
+  color: #009B5E; /* highlight number in green */
+}
+
+/* underline always stays green */
+.stat-box strong::after {
+  background: #009B5E;
+}
+
+/* === Scrollable section (secondary metrics) === */
+.secondary-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 14px;
+  margin-top: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #009B5E #e7fff1;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+/* Scrollbar styling */
+.secondary-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+.secondary-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #009B5E, #009B5E);
+  border-radius: 10px;
+}
+.secondary-scroll::-webkit-scrollbar-track {
+  background: #e7fff1;
+}
+
+/* === Mobile layout === */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+    color: #004b2e;
+  }
+
+  .mobile-only .total {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 4px;
+    padding: 2px 6px 6px;
+    background: none;
+  }
+
+  .mobile-only .total::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 3px;
+    background: #009B5E;
+    border-radius: 2px;
+    opacity: 0.9;
+  }
+
+  .tailgate-stats {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 12px 14px 16px;
+    gap: 8px;
+  }
+
+  .secondary-scroll {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 6px 2px 14px;
+    gap: 12px;
+  }
+
+  .stat-box {
+    min-width: 120px;
+    padding: 4px 2px;
+  }
+
+  .stat-box h4 {
+    font-size: 13px;
+  }
+
+  .stat-box strong {
+    font-size: 17px;
+  }
+}
+
+/* === WordPress block editor fix === */
+body.wp-admin .tailgate-stats {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  clear: both !important;
+  margin: 18px 0 !important;
+}
+
+/* === Fix hover highlight for mobile text === */
+.main-header:hover .mobile-only,
+.main-header:active .mobile-only {
+  color: #009B5E;
+  transition: color 0.3s ease;
+}
+</style>
+
+<div class="tailgate-stats">
+  <div class="main-header highlightable">
+    <!-- Desktop layout -->
+    <h3 class="desktop-only">
+      <span class="state">#2 Los Angeles Lakers</span><br>
+      <span class="label">Total Cost (Family of Four)</span><br>
+      <strong class="total">$1,937.37</strong>
+    </h3>
+
+    <!-- Mobile layout -->
+    <h3 class="mobile-only">
+      <span>Los Angeles Lakers Family Cost:</span>
+      <strong class="total">$1,937.37</strong>
+    </h3>
+  </div>
+
+  <div class="secondary-scroll">
+    <div class="stat-box">
+      <h4>🎟️ Four Tickets<br><span>(Crypto.com Arena)</span></h4>
+      <strong>$1,154.41</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>🍔 Food & Drinks<br><span>(Average Spend)</span></h4>
+      <strong>$74.84</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>🧢 Merchandise<br><span>(4 Jerseys + 4 Hats)</span></h4>
+      <strong>$683.42</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>🅿️ Parking<br><span>(Per Game)</span></h4>
+      <strong>$24.70</strong>
+    </div>
+  </div>
+</div>
