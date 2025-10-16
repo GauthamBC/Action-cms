@@ -24,6 +24,7 @@
 </div>
 
 <style>
+/* === Tailgate Stats (Metrics Only) === */
 .tailgate-stats {
   background: linear-gradient(90deg, #fff6cc 0%, #fffdf5 100%);
   border-left: 4px solid #F2C23A;
@@ -39,29 +40,28 @@
   position: relative;
 }
 
-/* Scrollable area for stats */
+/* === Scrollable Metrics Row === */
 .secondary-scroll {
   display: flex;
-  overflow-x: auto;
+  justify-content: center;      /* centers when full width fits */
+  flex-wrap: nowrap;
   gap: 18px;
   padding: 6px 0 12px;
+  overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: #F2C23A #fff8e0;
   -webkit-overflow-scrolling: touch;
 }
 
-.secondary-scroll::-webkit-scrollbar {
-  height: 4px;
-}
+/* scrollbar styling */
+.secondary-scroll::-webkit-scrollbar { height: 4px; }
 .secondary-scroll::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, #F2C23A, #ffe88a);
   border-radius: 10px;
 }
-.secondary-scroll::-webkit-scrollbar-track {
-  background: #fff8e0;
-}
+.secondary-scroll::-webkit-scrollbar-track { background: #fff8e0; }
 
-/* Stat boxes */
+/* === Individual Metric Boxes === */
 .stat-box {
   flex: 0 0 auto;
   text-align: center;
@@ -107,7 +107,7 @@
   opacity: 0.9;
 }
 
-/* Mobile: stack if very narrow */
+/* === Mobile Layout: Scrollable & Compact === */
 @media (max-width: 540px) {
   .tailgate-stats {
     flex-direction: column;
@@ -124,11 +124,7 @@
     min-width: 120px;
     padding: 4px 2px;
   }
-  .stat-box h4 {
-    font-size: 13px;
-  }
-  .stat-box strong {
-    font-size: 17px;
-  }
+  .stat-box h4 { font-size: 13px; }
+  .stat-box strong { font-size: 17px; }
 }
 </style>
