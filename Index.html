@@ -80,15 +80,52 @@
   opacity: 0.9;
 }
 
-/* Hover behaviour */
-.main-header:hover .state,
-.main-header:hover .label {
-  color: #009B5E;
+/* === Hover behaviour (updated unified zoom effect) === */
+.main-header h3,
+.main-header .total {
+  transition: all 0.25s ease-in-out;
 }
+
+/* When hovering over the header */
+.main-header:hover .state,
+.main-header:hover .label,
+.main-header:hover h3 {
+  color: #009B5E; /* green text on hover */
+  transform: scale(1.08); /* subtle zoom for header text */
+}
+
+/* Highlighted number effect */
 .main-header:hover .total {
-  background: #66E2A1;
-  color: #111;
-  transform: scale(1.05);
+  background: #009B5E;  /* same dark green as underline */
+  color: #fff;          /* white text */
+  transform: scale(1.12); /* slightly stronger zoom for number */
+  border-radius: 8px;
+}
+
+/* === Hover effect for stat boxes (subtle zoom + green number) === */
+.stat-box {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 120px;
+  transition: all 0.25s ease-in-out;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
+.stat-box:hover {
+  transform: scale(1.06); /* smooth zoom */
+  box-shadow: 0 4px 10px rgba(0, 155, 94, 0.2);
+  background: rgba(0, 155, 94, 0.05); /* very light green tint for depth */
+}
+
+/* keep text same color, only highlight the number */
+.stat-box:hover strong {
+  color: #009B5E; /* highlight number in green */
+}
+
+/* underline always stays green */
+.stat-box strong::after {
+  background: #009B5E;
 }
 
 /* === Scrollable section (secondary metrics) === */
@@ -109,7 +146,7 @@
   height: 4px;
 }
 .secondary-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #009B5E, #66E2A1);
+  background: linear-gradient(90deg, #009B5E, #009B5E);
   border-radius: 10px;
 }
 .secondary-scroll::-webkit-scrollbar-track {
