@@ -8,11 +8,10 @@
   border-radius: 10px;
   padding: 10px 18px 16px;
   margin: 20px auto;
-  width: calc(100% - 40px); /* adds side breathing space */
+  width: calc(100% - 40px);
   max-width: 850px;
   box-sizing: border-box;
 
-  /* Layout setup */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,7 +77,7 @@
   opacity: 0.9;
 }
 
-/* Hover behaviour — highlight text + box the number */
+/* Hover behaviour */
 .main-header:hover .state,
 .main-header:hover .label {
   color: #F2C23A;
@@ -94,7 +93,7 @@
   display: flex;
   overflow-x: auto;
   gap: 16px;
-  padding-bottom: 14px; /* lower scrollbar position */
+  padding-bottom: 14px;
   margin-top: 8px;
   scrollbar-width: thin;
   scrollbar-color: #F2C23A #fff8e0;
@@ -245,13 +244,13 @@ body.wp-admin .tailgate-stats {
     <h3 class="desktop-only">
       <span class="state">#1 New York Knicks</span><br>
       <span class="label">Total Cost (Family of Four)</span><br>
-      <strong>$2,130.53</strong>
+      <strong class="total">$2,130.53</strong>
     </h3>
 
     <!-- Mobile layout -->
     <h3 class="mobile-only">
       <span>New York Knicks Family Cost:</span>
-      <strong>$2,130.53</strong>
+      <strong class="total">$2,130.53</strong>
     </h3>
   </div>
 
@@ -277,3 +276,17 @@ body.wp-admin .tailgate-stats {
     </div>
   </div>
 </div>
+
+<style>
+/* === Small yellow line for total number === */
+.main-header strong.total::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: #F2C23A;
+  margin: 6px auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+</style>
