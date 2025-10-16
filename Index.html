@@ -8,11 +8,10 @@
   border-radius: 10px;
   padding: 10px 18px 16px;
   margin: 20px auto;
-  width: calc(100% - 40px); /* adds side breathing space */
+  width: calc(100% - 40px);
   max-width: 850px;
   box-sizing: border-box;
 
-  /* Layout setup */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +21,7 @@
   z-index: 2;
   clear: both;
   isolation: isolate;
+  overflow: hidden; /* prevents bleed */
 }
 
 /* === Header (Desktop version) === */
@@ -66,7 +66,6 @@
   transition: all 0.35s ease;
 }
 
-/* underline for score number */
 .main-header strong::after {
   content: "";
   display: block;
@@ -78,7 +77,6 @@
   opacity: 0.9;
 }
 
-/* Hover behaviour — highlight text + box the number */
 .main-header:hover .state,
 .main-header:hover .label {
   color: #F2C23A;
@@ -94,7 +92,7 @@
   display: flex;
   overflow-x: auto;
   gap: 16px;
-  padding-bottom: 14px; /* lower scrollbar position */
+  padding-bottom: 14px;
   margin-top: 8px;
   scrollbar-width: thin;
   scrollbar-color: #F2C23A #fff8e0;
@@ -102,7 +100,6 @@
   flex: 1;
 }
 
-/* Scrollbar styling */
 .secondary-scroll::-webkit-scrollbar {
   height: 4px;
 }
@@ -196,20 +193,26 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 12px 14px 16px;
-    gap: 8px;
+    padding: 12px 10px 16px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* critical fix */
+    gap: 10px;
   }
 
   .secondary-scroll {
     width: 100%;
-    justify-content: flex-start;
-    padding: 6px 2px 14px;
-    gap: 12px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 6px 0 10px;
+    overflow-x: auto;
   }
 
   .stat-box {
-    min-width: 120px;
+    min-width: 100px;
     padding: 4px 2px;
+    flex: 0 0 auto;
   }
 
   .stat-box h4 {
@@ -241,14 +244,12 @@ body.wp-admin .tailgate-stats {
 
 <div class="tailgate-stats">
   <div class="main-header highlightable">
-    <!-- Desktop layout -->
     <h3 class="desktop-only">
       <span class="state">#1 Texas</span><br>
       <span class="label">Tailgating Score (/100)</span><br>
       <strong>78.66</strong>
     </h3>
 
-    <!-- Mobile layout -->
     <h3 class="mobile-only">
       <span>Texas Tailgating Score:</span>
       <strong>78.66</strong>
@@ -260,22 +261,18 @@ body.wp-admin .tailgate-stats {
       <h4>💵 Tailgating Cost<br><span>(Beer, BBQ Fuel, Meat, Parking)</span></h4>
       <strong>$45.52</strong>
     </div>
-
     <div class="stat-box">
       <h4>🅿️ Parking Spaces<br><span>(Est.)</span></h4>
       <strong>97,241</strong>
     </div>
-
     <div class="stat-box">
       <h4>🏈 CFB & NFL Teams<br><span>(Count)</span></h4>
       <strong>15</strong>
     </div>
-
     <div class="stat-box">
       <h4>💬 Fan Sentiment<br><span>(Positive)</span></h4>
       <strong>59.70%</strong>
     </div>
-
     <div class="stat-box">
       <h4>🔍 Fan Interest<br><span>(Monthly Searches)</span></h4>
       <strong>7,470</strong>
