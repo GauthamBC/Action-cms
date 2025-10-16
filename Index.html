@@ -53,26 +53,29 @@
   line-height: 1.2;
 }
 
-.main-header strong {
+/* highlight the number + underline */
+.main-header .total {
   font-size: 25px;
   font-weight: 900;
   color: #000;
   display: inline-block;
   margin-top: 4px;
-  padding: 4px 10px;
+  padding: 4px 10px 8px;
   border-radius: 6px;
   position: relative;
   transition: all 0.35s ease;
 }
 
-/* underline for score number */
-.main-header strong::after {
+/* yellow line directly under number */
+.main-header .total::after {
   content: "";
-  display: block;
-  width: 32px;
+  position: absolute;
+  bottom: 0; /* sits right under number */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
   height: 3px;
   background: #F2C23A;
-  margin: 5px auto 0;
   border-radius: 2px;
   opacity: 0.9;
 }
@@ -82,7 +85,7 @@
 .main-header:hover .label {
   color: #F2C23A;
 }
-.main-header:hover strong {
+.main-header:hover .total {
   background: #F2C23A;
   color: #111;
   transform: scale(1.05);
@@ -178,17 +181,26 @@
     color: #3b2f00;
   }
 
-  .mobile-only strong {
-    display: inline;
+  .mobile-only .total {
+    display: inline-block;
     font-size: 20px;
     font-weight: 900;
     margin-left: 4px;
-    padding: 2px 6px;
+    padding: 2px 6px 6px;
     background: none;
   }
 
-  .mobile-only strong::after {
-    display: none;
+  .mobile-only .total::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 3px;
+    background: #F2C23A;
+    border-radius: 2px;
+    opacity: 0.9;
   }
 
   .tailgate-stats {
@@ -276,17 +288,3 @@ body.wp-admin .tailgate-stats {
     </div>
   </div>
 </div>
-
-<style>
-/* === Small yellow line for total number === */
-.main-header strong.total::after {
-  content: "";
-  display: block;
-  width: 36px;
-  height: 3px;
-  background: #F2C23A;
-  margin: 6px auto 0;
-  border-radius: 2px;
-  opacity: 0.9;
-}
-</style>
