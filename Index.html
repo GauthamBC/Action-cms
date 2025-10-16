@@ -237,8 +237,13 @@ body.wp-admin .tailgate-stats {
   color: #F2C23A;
   transition: color 0.3s ease;
 }
-  body.wp-admin .tailgate-stats {
+/* === WordPress editor fix (only inside dashboard) === */
+body.wp-admin .editor-styles-wrapper .tailgate-stats {
+  display: flex !important;
   flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
 }
 </style>
 <div class="tailgate-stats">
