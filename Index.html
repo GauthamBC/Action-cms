@@ -1,74 +1,127 @@
-<div class="tailgate-stats no-header">
-  <div class="secondary-scroll">
-    <div class="stat-box">
-      <h4>💵 Tailgating Cost<br><span>(Beer, BBQ Fuel, Meat, Parking)</span></h4>
-      <strong>$45.52</strong>
-    </div>
-    <div class="stat-box">
-      <h4>🅿️ Parking Spaces<br><span>(Est.)</span></h4>
-      <strong>97,241</strong>
-    </div>
-    <div class="stat-box">
-      <h4>🏈 CFB & NFL Teams<br><span>(Count)</span></h4>
-      <strong>15</strong>
-    </div>
-    <div class="stat-box">
-      <h4>💬 Fan Sentiment<br><span>(Positive)</span></h4>
-      <strong>59.70%</strong>
-    </div>
-    <div class="stat-box">
-      <h4>🔍 Fan Interest<br><span>(Monthly Searches)</span></h4>
-      <strong>7,470</strong>
-    </div>
-  </div>
-</div>
-
 <style>
-/* === Tailgate Stats (Metrics Only) === */
+/* === Tailgate Stats (Shared Styles for All States) === */
+
+/* === Main container (desktop/laptop) === */
 .tailgate-stats {
   background: linear-gradient(90deg, #fff6cc 0%, #fffdf5 100%);
   border-left: 4px solid #F2C23A;
   border-radius: 10px;
-  padding: 10px 18px 14px;
+  padding: 10px 18px 16px;
   margin: 20px auto;
-  width: calc(100% - 40px);
+  width: calc(100% - 40px); /* adds side breathing space */
   max-width: 850px;
   box-sizing: border-box;
+
+  /* Layout setup */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: nowrap;
   position: relative;
+  z-index: 2;
+  clear: both;
+  isolation: isolate;
 }
 
-/* === Scrollable Metrics Row === */
+/* === Header (Desktop version) === */
+.main-header {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 170px;
+  padding: 2px 6px;
+  border-radius: 8px;
+  transition: all 0.35s ease;
+}
+
+.main-header h3 {
+  margin: 0;
+  font-weight: 800;
+  color: #3b2f00;
+  transition: color 0.3s ease;
+}
+
+.main-header .state {
+  font-size: 17px;
+  font-weight: 900;
+  color: #3b2f00;
+}
+
+.main-header .label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #4b3b00;
+  line-height: 1.2;
+}
+
+.main-header strong {
+  font-size: 25px;
+  font-weight: 900;
+  color: #000;
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+/* underline for score number */
+.main-header strong::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: #F2C23A;
+  margin: 5px auto 0;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* Hover behaviour — highlight text + box the number */
+.main-header:hover .state,
+.main-header:hover .label {
+  color: #F2C23A;
+}
+.main-header:hover strong {
+  background: #F2C23A;
+  color: #111;
+  transform: scale(1.05);
+}
+
+/* === Scrollable section (secondary metrics) === */
 .secondary-scroll {
   display: flex;
-  justify-content: center;      /* centers when full width fits */
-  flex-wrap: nowrap;
-  gap: 18px;
-  padding: 6px 0 12px;
   overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 14px; /* lower scrollbar position */
+  margin-top: 8px;
   scrollbar-width: thin;
   scrollbar-color: #F2C23A #fff8e0;
   -webkit-overflow-scrolling: touch;
+  flex: 1;
 }
 
-/* scrollbar styling */
-.secondary-scroll::-webkit-scrollbar { height: 4px; }
+/* Scrollbar styling */
+.secondary-scroll::-webkit-scrollbar {
+  height: 4px;
+}
 .secondary-scroll::-webkit-scrollbar-thumb {
   background: linear-gradient(90deg, #F2C23A, #ffe88a);
   border-radius: 10px;
 }
-.secondary-scroll::-webkit-scrollbar-track { background: #fff8e0; }
+.secondary-scroll::-webkit-scrollbar-track {
+  background: #fff8e0;
+}
 
-/* === Individual Metric Boxes === */
+/* === Stat boxes === */
 .stat-box {
   flex: 0 0 auto;
   text-align: center;
   min-width: 120px;
   transition: all 0.3s ease;
   border-radius: 8px;
-  padding: 3px 6px;
+  padding: 3px 0;
 }
 .stat-box:hover {
   transform: scale(1.06);
@@ -80,6 +133,7 @@
   color: #4b3b00;
   margin: 0;
   font-weight: 700;
+  transition: color 0.3s ease;
 }
 .stat-box h4 span {
   display: block;
@@ -107,8 +161,37 @@
   opacity: 0.9;
 }
 
-/* === Mobile Layout: Scrollable & Compact === */
-@media (max-width: 540px) {
+/* === Mobile layout === */
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+    color: #3b2f00;
+  }
+
+  .mobile-only strong {
+    display: inline;
+    font-size: 20px;
+    font-weight: 900;
+    margin-left: 4px;
+    padding: 2px 6px;
+    background: none;
+  }
+
+  .mobile-only strong::after {
+    display: none;
+  }
+
   .tailgate-stats {
     flex-direction: column;
     align-items: center;
@@ -116,15 +199,85 @@
     padding: 12px 14px 16px;
     gap: 8px;
   }
+
   .secondary-scroll {
+    width: 100%;
     justify-content: flex-start;
+    padding: 6px 2px 14px;
     gap: 12px;
   }
+
   .stat-box {
     min-width: 120px;
     padding: 4px 2px;
   }
-  .stat-box h4 { font-size: 13px; }
-  .stat-box strong { font-size: 17px; }
+
+  .stat-box h4 {
+    font-size: 13px;
+  }
+
+  .stat-box strong {
+    font-size: 17px;
+  }
+}
+
+/* === WordPress block editor fix === */
+body.wp-admin .tailgate-stats {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  clear: both !important;
+  margin: 18px 0 !important;
+}
+
+/* === Fix hover highlight for mobile text === */
+.main-header:hover .mobile-only,
+.main-header:active .mobile-only {
+  color: #F2C23A;
+  transition: color 0.3s ease;
 }
 </style>
+<div class="tailgate-stats">
+  <div class="main-header highlightable">
+    <!-- Desktop layout -->
+    <h3 class="desktop-only">
+      <span class="state">#1 Texas</span><br>
+      <span class="label">Tailgating Score (/100)</span><br>
+      <strong>78.66</strong>
+    </h3>
+
+    <!-- Mobile layout -->
+    <h3 class="mobile-only">
+      <span>Texas Tailgating Score:</span>
+      <strong>78.66</strong>
+    </h3>
+  </div>
+
+  <div class="secondary-scroll">
+    <div class="stat-box">
+      <h4>💵 Tailgating Cost<br><span>(Beer, BBQ Fuel, Meat, Parking)</span></h4>
+      <strong>$45.52</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>🅿️ Parking Spaces<br><span>(Est.)</span></h4>
+      <strong>97,241</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>🏈 CFB & NFL Teams<br><span>(Count)</span></h4>
+      <strong>15</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>💬 Fan Sentiment<br><span>(Positive)</span></h4>
+      <strong>59.70%</strong>
+    </div>
+
+    <div class="stat-box">
+      <h4>🔍 Fan Interest<br><span>(Monthly Searches)</span></h4>
+      <strong>7,470</strong>
+    </div>
+  </div>
+</div>
