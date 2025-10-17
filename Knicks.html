@@ -36,14 +36,17 @@
   font-weight: 800;
   color: #003b26;
   transition: color 0.3s ease;
+  font-size: 17px;
+  line-height: 1.3;
 }
 
 .main-header .state {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: #003b26;
   letter-spacing: 0.3px;
   text-transform: none;
+  white-space: nowrap;
 }
 
 .main-header .label {
@@ -53,14 +56,14 @@
   line-height: 1.2;
 }
 
-/* highlight the number + underline */
+/* === Total Amount Styling === */
 .main-header .total {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 900;
   color: #000;
   display: inline-block;
-  margin-top: 4px;
-  padding: 4px 10px 8px;
+  margin-left: 6px;
+  padding: 2px 6px;
   border-radius: 6px;
   position: relative;
   transition: all 0.35s ease;
@@ -72,14 +75,14 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
+  width: 35px;
   height: 3px;
   background: #009B5E;
   border-radius: 2px;
   opacity: 0.9;
 }
 
-/* === Hover behaviour === */
+/* === Hover behaviour (unified zoom effect) === */
 .main-header h3,
 .main-header .total {
   transition: all 0.25s ease-in-out;
@@ -89,14 +92,7 @@
 .main-header:hover .label,
 .main-header:hover h3 {
   color: #009B5E;
-  transform: scale(1.08);
-}
-
-.main-header:hover .total {
-  background: #009B5E;
-  color: #fff;
-  transform: scale(1.12);
-  border-radius: 8px;
+  transform: scale(1.04);
 }
 
 /* === Stat Boxes === */
@@ -123,12 +119,13 @@
   background: #009B5E;
 }
 
+/* === Scrollable Section === */
 .secondary-scroll {
   display: flex;
   overflow-x: auto;
   gap: 16px;
   padding-bottom: 14px;
-  margin-top: 8px;
+  margin-top: 10px;
   scrollbar-width: thin;
   scrollbar-color: #009B5E #e7fff1;
   -webkit-overflow-scrolling: touch;
@@ -146,6 +143,7 @@
   background: #e7fff1;
 }
 
+/* === Stat Box Text === */
 .stat-box h4 {
   font-size: 13.5px;
   color: #004b2e;
@@ -188,7 +186,7 @@
   .desktop-only { display: none; }
   .mobile-only {
     display: block;
-    font-size: 15px;
+    font-size: 14.5px;
     font-weight: 800;
     text-align: center;
     color: #004b2e;
@@ -196,19 +194,20 @@
 
   .mobile-only .total {
     display: inline-block;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
     margin-left: 4px;
-    padding: 2px 6px 6px;
+    padding: 2px 6px;
     background: none;
   }
+
   .mobile-only .total::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 36px;
+    width: 32px;
     height: 3px;
     background: #009B5E;
     border-radius: 2px;
@@ -236,32 +235,64 @@
   .stat-box strong { font-size: 17px; }
 }
 
-/* === Custom Alignment === */
-.secondary-scroll { justify-content: space-between; }
-.secondary-scroll .stat-box:nth-child(1),
-.secondary-scroll .stat-box:nth-child(2),
-.secondary-scroll .stat-box:nth-child(3),
-.secondary-scroll .stat-box:last-child {
-  margin-left: auto;
+/* === Equal Distribution for Desktop === */
+@media (min-width: 769px) {
+  .tailgate-stats { justify-content: center; }
+  .secondary-scroll {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: visible;
+    gap: 30px;
+  }
+  .stat-box {
+    flex: 1 1 0;
+    min-width: 0;
+  }
 }
 
 /* === Balanced Highlight: Only Team Name === */
 .main-header .team-rank {
-  font-size: 23px !important;   /* reduced from 28px for balance */
-  font-weight: 900 !important;
-  color: #003b26 !important;
+  font-size: 20px;
+  font-weight: 900;
+  color: #003b26;
   letter-spacing: 0.3px;
   line-height: 1.1;
+  display: inline-block;
+  position: relative;
 }
 
 .main-header .team-rank::after {
   content: "";
   display: block;
-  width: 45px;
+  width: 35px;
   height: 3px;
-  margin: 6px auto 0;
+  margin: 4px auto 0;
   background: #009B5E;
   border-radius: 2px;
+}
+
+/* === Refined Unified Hover (Balanced + Clean Box) === */
+.main-header:hover .team-rank,
+.main-header:hover .total {
+  color: #fff !important;
+  background: #009B5E;
+  padding: 2.5px 8px;           /* reduced vertical padding for even height */
+  border-radius: 6px;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+.main-header:hover .team-rank::after {
+  opacity: 0;
+}
+
+.main-header:hover .state {
+  color: #009B5E;
+  transition: color 0.3s ease;
 }
 </style>
 
@@ -270,14 +301,16 @@
     <!-- Desktop layout -->
     <h3 class="desktop-only">
       <span class="state">
-        <span class="team-rank">#1 New York Knicks</span> (Total Family Cost) :
-      </span><br>
-      <strong class="total">$2,130.53</strong>
+        <span class="team-rank">#1 New York Knicks</span>
+        (Total Family Cost):
+        <strong class="total">$2,130.53</strong>
+      </span>
     </h3>
   
     <!-- Mobile layout -->
     <h3 class="mobile-only">
-      <span class="team-rank">#1 New York Knicks</span> (Total Family Cost) :
+      <span class="team-rank">#1 New York Knicks</span>
+      (Total Family Cost):
       <strong class="total">$2,130.53</strong>
     </h3>
   </div>
