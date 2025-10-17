@@ -1,4 +1,3 @@
-
 <style>
 /* === Tailgate Stats (Shared Styles for All States) === */
 
@@ -218,7 +217,7 @@
     color: #004b2e;
   }
 
-    .secondary-scroll {
+  .secondary-scroll {
     width: 100%;
     justify-content: flex-start;
     padding: 6px 0 14px; /* remove side padding */
@@ -325,6 +324,15 @@ body.wp-admin .tailgate-stats {
 .main-header:active .mobile-only {
   color: #009B5E;
   transition: color 0.3s ease;
+}
+
+/* === Ensure the last stat box aligns to the end === */
+.secondary-scroll {
+  justify-content: space-between; /* evenly distribute others */
+}
+
+.secondary-scroll .stat-box:last-child {
+  margin-left: auto; /* push the last box to the far right */
 }
 </style>
 
