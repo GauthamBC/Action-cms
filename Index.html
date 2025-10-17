@@ -268,6 +268,19 @@
     font-size: 17px;
   }
 }
+/* === Desktop: distribute boxes evenly up to full width === */
+@media (min-width: 769px) {
+  .secondary-scroll {
+    justify-content: space-evenly; /* evenly space all boxes */
+    overflow-x: visible;            /* remove scroll on desktop */
+    gap: 0;                         /* remove extra right-side gap */
+  }
+
+  .stat-box {
+    flex: 1 1 0;                    /* stretch equally */
+    min-width: unset;               /* remove fixed width */
+  }
+}
 
 /* === WordPress block editor fix === */
 body.wp-admin .tailgate-stats {
@@ -291,7 +304,7 @@ body.wp-admin .tailgate-stats {
   <div class="main-header highlightable">
     <!-- Desktop layout -->
     <h3 class="desktop-only">
-      <span class="state">#1 New York Knicks</span><br>
+      <span class="state">#1 New York KNICKS</span><br>
       <span class="label">Total Cost (Family of Four)</span><br>
       <strong class="total">$2,130.53</strong>
     </h3>
