@@ -19,7 +19,7 @@
   isolation: isolate;
 }
 
-/* === Header (Now universal) === */
+/* === Header (Universal) === */
 .main-header {
   flex: 0 0 auto;
   text-align: center;
@@ -90,13 +90,14 @@
   opacity: 0;
 }
 
-/* === Stat Boxes === */
+/* === Stat Boxes Container === */
 .secondary-scroll {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 800px;
   gap: 16px;
   padding: 6px 2px 14px;
   overflow-x: auto;
@@ -113,6 +114,16 @@
 }
 .secondary-scroll::-webkit-scrollbar-track {
   background: #e7fff1;
+}
+
+/* === Manual nth-child spacing (balanced distribution) === */
+.secondary-scroll .stat-box:nth-child(1),
+.secondary-scroll .stat-box:nth-child(2),
+.secondary-scroll .stat-box:nth-child(3) {
+  margin-right: auto;
+}
+.secondary-scroll .stat-box:nth-child(4) {
+  margin-left: auto;
 }
 
 /* === Stat Box Text === */
