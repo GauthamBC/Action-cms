@@ -286,20 +286,27 @@
     font-size: 17px;
   }
 }
+  
 /* === Desktop: distribute boxes evenly up to full width === */
 @media (min-width: 769px) {
-   .tailgate-stats {
-    justify-content: center; /* center everything */
+  .tailgate-stats {
+    justify-content: center;
   }
+
   .secondary-scroll {
-    justify-content: space-evenly; /* evenly space all boxes */
-    overflow-x: visible;            /* remove scroll on desktop */
-    gap: 0;                         /* remove extra right-side gap */
+    display: flex;
+    justify-content: space-between; /* evenly distribute boxes */
+    align-items: stretch;
+    width: 100%;
+    max-width: 800px; /* keeps them from stretching too far */
+    margin: 0 auto;
+    overflow-x: visible;
+    gap: 24px; /* consistent horizontal gap */
   }
 
   .stat-box {
-    flex: 1 1 0;                    /* stretch equally */
-    min-width: unset;               /* remove fixed width */
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
 
