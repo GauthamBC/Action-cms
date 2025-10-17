@@ -218,6 +218,24 @@
     color: #004b2e;
   }
 
+    .secondary-scroll {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 6px 0 14px; /* remove side padding */
+    margin-right: 0;
+    gap: 12px;
+    scroll-padding-right: 0; /* ensures no scroll offset */
+  }
+
+  .secondary-scroll::after {
+    content: "";
+    flex: 0 0 2px; /* prevents right spacing cut-off illusion */
+  }
+
+  .stat-box:last-child {
+    margin-right: 0 !important; /* removes residual right margin */
+  }
+
   .mobile-only .total {
     display: inline-block;
     font-size: 20px;
@@ -321,7 +339,7 @@ body.wp-admin .tailgate-stats {
 
   <div class="secondary-scroll">
     <div class="stat-box">
-      <h4>🎟️ Four Tickets<br><span>(Madison Square Garden)</span></h4>
+      <h4>🎟️ Five Tickets<br><span>(Madison Square Garden)</span></h4>
       <strong>$1,383.76</strong>
     </div>
 
