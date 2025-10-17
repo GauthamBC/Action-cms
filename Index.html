@@ -326,16 +326,17 @@ body.wp-admin .tailgate-stats {
   transition: color 0.3s ease;
 }
 
-/* === Ensure the 3rd and 4th stat boxes align right === */
+/* === Custom Alignment: Push Selected Stat Boxes Toward the Right === */
 .secondary-scroll {
   justify-content: space-between; /* evenly distribute others */
 }
 
+.secondary-scroll .stat-box:nth-child(1),
+.secondary-scroll .stat-box:nth-child(2),
 .secondary-scroll .stat-box:nth-child(3),
 .secondary-scroll .stat-box:last-child {
-  margin-left: auto; /* push both merchandisers and parking to the right */
+  margin-left: auto; /* push these boxes toward the right edge */
 }
-</style>
 
 <div class="tailgate-stats">
   <div class="main-header highlightable">
@@ -355,7 +356,7 @@ body.wp-admin .tailgate-stats {
 
   <div class="secondary-scroll">
     <div class="stat-box">
-      <h4>🎟️ Five Tickets<br><span>(Madison Square Garden)</span></h4>
+      <h4>🎟️ Fiver Tickets<br><span>(Madison Square Garden)</span></h4>
       <strong>$1,383.76</strong>
     </div>
 
