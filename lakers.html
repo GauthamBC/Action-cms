@@ -239,15 +239,15 @@
 @media (min-width: 769px) {
   .tailgate-stats { justify-content: center; }
   .secondary-scroll {
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow-x: visible;
-    gap: 30px;
-  }
+  display: flex;
+  justify-content: space-evenly; /* evenly distributes all 4 boxes */
+  align-items: stretch;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-x: visible;
+  gap: 24px; /* smaller, smoother gap */
+}
   .stat-box {
     flex: 1 1 0;
     min-width: 0;
