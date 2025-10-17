@@ -326,13 +326,14 @@ body.wp-admin .tailgate-stats {
   transition: color 0.3s ease;
 }
 
-/* === Ensure the last stat box aligns to the end === */
+/* === Ensure the 3rd and 4th stat boxes align right === */
 .secondary-scroll {
   justify-content: space-between; /* evenly distribute others */
 }
 
+.secondary-scroll .stat-box:nth-child(3),
 .secondary-scroll .stat-box:last-child {
-  margin-left: auto; /* push the last box to the far right */
+  margin-left: auto; /* push both merchandisers and parking to the right */
 }
 </style>
 
