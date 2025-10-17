@@ -239,18 +239,28 @@
 @media (min-width: 769px) {
   .tailgate-stats { justify-content: center; }
   .secondary-scroll {
-  display: flex;
-  justify-content: space-evenly; /* evenly distributes all 4 boxes */
-  align-items: stretch;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow-x: visible;
-  gap: 24px; /* smaller, smoother gap */
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: visible;
+    gap: 24px;
+  }
   .stat-box {
     flex: 1 1 0;
     min-width: 0;
+  }
+
+  /* === Custom margin spacing for even distribution === */
+  .secondary-scroll .stat-box:nth-child(1),
+  .secondary-scroll .stat-box:nth-child(2),
+  .secondary-scroll .stat-box:nth-child(3) {
+    margin-right: auto;
+  }
+  .secondary-scroll .stat-box:nth-child(4) {
+    margin-left: auto;
   }
 }
 
@@ -325,7 +335,7 @@
       <strong>$74.84</strong>
     </div>
     <div class="stat-box">
-      <h4>🧢 Merchandise<br><span>(4 Jerseys + 4 Hats)</span></h4>
+      <h4>🧢 LMerchandise<br><span>(4 Jerseys + 4 Hats)</span></h4>
       <strong>$683.42</strong>
     </div>
     <div class="stat-box">
